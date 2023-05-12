@@ -13,8 +13,8 @@ function displayResults(countries) {
     .map(country => {
       return `
           <li class="country-item">
-            <svg><use href="${country.flags.svg}"></use></svg>
-            <span class="country-name">${country.name.official}</span>
+            <svg><use href="${country.flag}"></use></svg>
+            <span class="country-name">${country.name}</span>
           </li>
         `;
     })
@@ -28,9 +28,7 @@ function searchCountries() {
   if (searchedCountry.length > 2) {
     fetchCountries(searchedCountry)
       .then(countries => displayResults(countries))
-      .catch(error =>
-        Notiflix.Notify.failure('Oops, there is no country with that name')
-      );
+      .catch(error => console.error(error));
   } else {
     countryList.innerHTML = '';
   }
