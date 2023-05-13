@@ -13,7 +13,7 @@ function displayResults(countries) {
     .map(country => {
       return `
           <li class="country-item">
-            <svg><use href="${country.flag}"></use></svg>
+          <svg><use href="https://flagcdn.com/pl.svg"></use></svg>
             <span class="country-name">${country.name}</span>
           </li>
         `;

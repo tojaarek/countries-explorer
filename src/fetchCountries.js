@@ -2,7 +2,7 @@ import Notiflix from 'notiflix';
 
 export default function fetchCountries(name) {
   const searchParams = new URLSearchParams({
-    fields: 'name.official,capital,population,flags.svg,languages',
+    fields: 'name,capital,population,flags,languages',
   });
   return fetch(`https://restcountries.com/v3/name/${name}?${searchParams}`)
     .then(response => {
