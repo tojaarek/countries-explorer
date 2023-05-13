@@ -19,8 +19,13 @@ function displayResults(countries) {
         `;
     })
     .join('');
-
-  countryList.innerHTML = results;
+  if (countries.length > 10) {
+    Notiflix.Notify.warning(
+      'Too many matches found. Please enter a more specific name.'
+    );
+  } else {
+    countryList.innerHTML = results;
+  }
 }
 
 function searchCountries() {
