@@ -14,14 +14,16 @@ export default function fetchCountries(name) {
     .then(data => {
       const countries = data.map(country => ({
         name: country.name.official,
-        capital: country.capital,
+        capital: Object.values(country.capital),
         population: country.population,
         flag: country.flags.svg,
-        languages: country.languages,
+        languages: Object.values(country.languages),
       }));
       return countries;
     })
     .catch(error => {
-      Notiflix.Notify.failure('Oops, there is no country with that name');
+      Notiflix.Notify.failure('Oops, there is no country with that name', {
+        fontFamily: 'Press Start 2P',
+      });
     });
 }

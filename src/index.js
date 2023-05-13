@@ -13,18 +13,40 @@ function displayResults(countries) {
     .map(country => {
       return `
           <li class="country-item">
-          <svg><use href="https://flagcdn.com/pl.svg"></use></svg>
-            <span class="country-name">${country.name}</span>
+          <svg width="50"><use href="${country.flag}"></use></svg>
+          <p class="country-item__name">${country.name}</p>
           </li>
         `;
     })
     .join('');
+  const details = countries.map(country => {
+    return `
+    <ul>
+    <li class="country-info__name">
+    <svg width="50"><use href="${country.flag}"></use></svg>
+    <p class="country-name">${country.name}</p>
+    </li>
+    <li class="country-info__details">
+    <p>Capital: ${country.capital}</p>
+    <p>Population: ${country.population}</p>
+    <p>Languages: ${country.languages}</p>
+    </li>
+    </ul>
+      `;
+  });
   if (countries.length > 10) {
     Notiflix.Notify.warning(
-      'Too many matches found. Please enter a more specific name.'
+      'Too many matches found. Please enter a more specific name.',
+      {
+        fontFamily: 'Press Start 2P',
+      }
     );
+  } else if (countries.length === 1) {
+    countryInfo.innerHTML = details;
+    countryList.innerHTML = '';
   } else {
     countryList.innerHTML = results;
+    countryInfo.innerHTML = '';
   }
 }
 
@@ -36,6 +58,7 @@ function searchCountries() {
       .catch(error => console.error(error));
   } else {
     countryList.innerHTML = '';
+    countryInfo.innerHTML = '';
   }
 }
 const debouncedSearch = debounce(searchCountries, DEBOUNCE_DELAY);
