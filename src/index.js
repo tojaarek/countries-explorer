@@ -44,8 +44,6 @@ function displayResults(countries) {
   } else if (countries.length === 1) {
     countryInfo.innerHTML = details;
     countryList.classList.add('hide');
-  } else if (searchInput.value === '') {
-    countryList.classList.add('hide');
   } else {
     countryList.classList.remove('hide');
     countryList.innerHTML = results;
@@ -55,11 +53,12 @@ function displayResults(countries) {
 
 function searchCountries() {
   const searchedCountry = searchInput.value.trim();
-  if (searchedCountry.length > 2) {
+  if (searchedCountry.length > 1) {
     fetchCountries(searchedCountry)
       .then(countries => displayResults(countries))
       .catch(error => console.error(error));
   } else {
+    countryList.classList.add('hide');
     countryList.innerHTML = '';
     countryInfo.innerHTML = '';
   }

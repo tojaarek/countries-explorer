@@ -66,10 +66,6 @@ ul {
   border-radius: 8px;
 }
 
-.country-info__name {
-  font-size: 22px;
-}
-
 .img-container {
   display: flex;
   justify-content: center;
