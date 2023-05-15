@@ -12,21 +12,21 @@ function displayResults(countries) {
   const results = countries
     .map(country => {
       return `
-          <li class="country-item">
-          <svg width="50"><use href="${country.flag}"></use></svg>
-          <p class="country-item__name">${country.name}</p>
+          <li class="country__item">
+          <img class="country__item-img" src="${country.flag}" alt="${country.alt}" width="50">
+          <p class="country__item-name">${country.name}</p>
           </li>
         `;
     })
     .join('');
   const details = countries.map(country => {
     return `
-    <ul>
-    <li class="country-info__name">
-    <svg width="50"><use href="${country.flag}"></use></svg>
-    <p class="country-name">${country.name}</p>
+    <ul class="country-info">
+    <li>
+    <img class="country-info__flag" src="${country.flag}" alt="${country.alt}" height="80">
+    <p>${country.name}</p>
     </li>
-    <li class="country-info__details">
+    <li>
     <p>Capital: ${country.capital}</p>
     <p>Population: ${country.population}</p>
     <p>Languages: ${country.languages}</p>
@@ -43,8 +43,11 @@ function displayResults(countries) {
     );
   } else if (countries.length === 1) {
     countryInfo.innerHTML = details;
-    countryList.innerHTML = '';
+    countryList.classList.add('hide');
+  } else if (searchInput.value === '') {
+    countryList.classList.add('hide');
   } else {
+    countryList.classList.remove('hide');
     countryList.innerHTML = results;
     countryInfo.innerHTML = '';
   }

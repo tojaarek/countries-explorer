@@ -4,7 +4,7 @@ export default function fetchCountries(name) {
   const searchParams = new URLSearchParams({
     fields: 'name,capital,population,flags,languages',
   });
-  return fetch(`https://restcountries.com/v3/name/${name}?${searchParams}`)
+  return fetch(`https://restcountries.com/v3.1/name/${name}?${searchParams}`)
     .then(response => {
       if (!response.ok) {
         throw new Error(response.status);
@@ -17,6 +17,7 @@ export default function fetchCountries(name) {
         capital: Object.values(country.capital),
         population: country.population,
         flag: country.flags.svg,
+        alt: country.flags.alt,
         languages: Object.values(country.languages),
       }));
       return countries;

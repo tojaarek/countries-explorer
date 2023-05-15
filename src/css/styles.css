@@ -17,9 +17,11 @@ body {
 
 ul {
   list-style: none;
+  padding: 5px 20px;
   border: 3px solid #611e9e;
   border-radius: 10px;
   width: 460px;
+  text-align: start;
 }
 
 #search-box {
@@ -43,8 +45,29 @@ ul {
   font-size: 28px;
 }
 
-.country-item {
+.country__item {
   display: flex;
+  align-items: center;
+}
+
+.country__item-img {
+  margin-right: 30px;
+  border: 2px solid #611e9e;
+  border-radius: 5px;
+}
+
+.country-info {
+  padding: 0 18px;
+}
+
+.country-info__flag {
+  margin-top: 20px;
+  border: 3px solid #611e9e;
+  border-radius: 8px;
+}
+
+.country-info__name {
+  font-size: 22px;
 }
 
 .img-container {
@@ -86,4 +109,8 @@ ul {
 .globe {
   position: absolute;
   filter: drop-shadow(-2px -2px 8px #ff409c) drop-shadow(2px 2px 3px #3b2bff);
+}
+
+.hide {
+  display: none;
 }
